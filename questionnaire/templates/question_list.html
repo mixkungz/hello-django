@@ -17,34 +17,30 @@
                 <h1 class="text-center">Questionnaire</h1>
             </div>
             <div class="col-12">
-                <span>Question 1 : answer is a & c</span>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        a.) ant
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        b.) bat
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        c.) cat
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        d.) dog
-                    </label>
-                </div>
-            </div>
-        </div>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for question in question_lists %}
+                    <div class="row">
+                        <div class="col-12">
 
+                            <span>{{question.question_name}}</span>
+                            {% for choice in question.choices %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="{{choice.choice_id}}" name="question_id_{{question.question_id}}">
+                                <label class="form-check-label" for="question_id_{{question.question_id}}">
+                                    {{choice.choice_id__choice}}
+                                </label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+            </div>
+            <div class="col-12">
+                <button class="btn btn-success" type="submit">send</button>
+            </div>
+            </form>
+        </div>
     </div>
 
 </body>
