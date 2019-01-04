@@ -5,8 +5,12 @@ from django.utils import timezone
 class Question(models.Model):
     id = models.AutoField(primary_key=True)
     question = models.CharField(max_length=500)
-    choices = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
+
+
+class QuestionChoice(models.Model):
+    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice = models.TextField()
 
 
 class Answer(models.Model):
