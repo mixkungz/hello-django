@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>answers</h1>
-</body>
+    {% for answer in answers %} <strong>{{ answer.question_id }}</strong
+    ><br />
+    {{ answer.choice_id }} <br /><br />{% endfor %}
+
+    <form method="POST">{% csrf_token %} <button>reset answer</button></form>
+
+    <a href="/questions">Go to question</a>
+  </body>
 </html>
