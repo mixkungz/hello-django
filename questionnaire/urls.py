@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views
+from questionnaire.views import QuestionView,AnswerView
 
 urlpatterns = [
-    path('questions', views.init_question_page, name='Initial Page'),
-    path('answers', views.init_answer_page, name='Initial Page'),
+    path('questions', QuestionView.as_view(), name='Initial Page'),
+    path('answers', AnswerView.as_view(), name='Initial Page'),
 ]
