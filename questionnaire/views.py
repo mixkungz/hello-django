@@ -10,20 +10,12 @@ from .models import Question, Choices, Answer
 class QuestionView(View):
     def get(self, request):
         questions = Question.objects.all()
-        return_data = []
 
-        # for question in questions:
-        #     choices = QuestionChoice.objects.filter(question_id=question.id).values('choice_id','choice_id__choice')
-        #     choices = list(choices)
+        for question in questions:
+            choices = list(question.choices.all())
+            question.choice_list = choices
 
-        #     prepare_data = {
-        #         "question_id":question.id,
-        #         "question_name":question.question,
-        #         "choices":choices
-        #     }
-        #     return_data.append(prepare_data)
-
-        return render(request, 'question_list.html',{'question_lists':return_data})
+        return render(request, 'question_list.html',{'question_lists':questions})
     
     def post(self, request):
         dict_request = dict(request.POST)
