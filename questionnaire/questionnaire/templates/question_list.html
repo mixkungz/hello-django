@@ -19,6 +19,7 @@
             <div class="col-12">
                 <form method="POST">
                     {% csrf_token %}
+                    {% comment %} {{ form }} {% endcomment %}
                     {% for question in question_lists %}
                     <div class="row">
                         <div class="col-12">

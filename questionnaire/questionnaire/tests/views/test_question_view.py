@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.test import TestCase, Client
 from questionnaire.models import Question, Choices, Answer
 
+
 class QuestionViewTest(TestCase):
     # def setUp(self):
     #     self.client = Client()
