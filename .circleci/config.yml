@@ -15,7 +15,7 @@ jobs:
           paths: .
 
   install_dependencies:
-    working_directory: ~/questionnaire
+    working_directory: ~
     docker:
       - image: circleci/python:3.7.1
     steps:
