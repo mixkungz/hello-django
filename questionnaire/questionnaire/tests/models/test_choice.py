@@ -5,7 +5,6 @@ from questionnaire.models import Choices
 class ChoicesTest(TestCase):
     def setUp(self):
         Choices.objects.create(choice='uniqlo')
-        Choices.objects.create(choice='h&m')
 
     def test_last_choice_should_has_choice_name_uniqlo(self):
         last_choice = Choices.objects.last()
