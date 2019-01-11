@@ -7,7 +7,7 @@ jobs:
   checkout_code:
     working_directory: ~/questionnaire
     docker:
-      - image: circleci/python:3.7.1
+      - image: circleci/python:3.6
     steps:
       - checkout
       - persist_to_workspace:
@@ -17,7 +17,7 @@ jobs:
   install_dependencies:
     working_directory: ~/questionnaire
     docker:
-      - image: circleci/python:3.7.1
+      - image: circleci/python:3.6
     steps:
       - attach_workspace:
           at: .
@@ -28,7 +28,7 @@ jobs:
   run_test:
     working_directory: ~/questionnaire
     docker:
-      - image: circleci/python:3.7.1
+      - image: circleci/python:3.6
       - image: circleci/postgres:11.1-alpine-ram
     steps:
       - attach_workspace:
