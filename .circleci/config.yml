@@ -29,7 +29,7 @@ jobs:
     working_directory: ~/questionnaire
     docker:
       - image: python:3.6
-      - image: circleci/postgres:11.1-alpine-ram
+      - image: postgres
     steps:
       - attach_workspace:
           at: .
@@ -38,6 +38,7 @@ jobs:
           command: |
             pip install -r requirements.txt
             cd questionnaire
+            export DATABASE_HOST=localhost
             python manage.py test
 
 workflows:
