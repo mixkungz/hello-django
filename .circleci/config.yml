@@ -56,6 +56,20 @@ jobs:
             docker build -t mixkungz/hello-django:stable .
             docker push mixkungz/hello-django:stable
 
+  deploy:
+    working_directory: ~/questionnaire
+    steps:
+      - attach_workspace:
+          at: .
+      - add_ssh_key
+      - run:
+          name: deploy
+          command: |
+            ssh-keyscan -H 35.198.253.178 >> ~/.ssh/known_hosts
+            ssh pcr.mixkungz@35.198.253.178
+            cd hello-django
+            sudo docker-compose -f docker-compose.prod.yml up -d
+
 workflows:
   version: 2
   simplezat_pipeline:
@@ -70,3 +84,6 @@ workflows:
       - build_docker_image:
           requires:
             - run_test
+      - deploy:
+          requires:
+            - build_docker_image
