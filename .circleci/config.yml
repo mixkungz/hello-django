@@ -41,6 +41,19 @@ jobs:
             export DATABASE_HOST=localhost
             python manage.py test
 
+  build_docker_image:
+    working_directory: ~/questionnaire
+    steps:
+      - attach_workspace:
+          at: .
+      - setup_remote_docker
+      - run:
+          name: build docker image
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+            docker build -t mixkungz/hello-django:stable
+            docker push mixkungz/hello-django:stable
+
 workflows:
   version: 2
   simplezat_pipeline:
@@ -52,3 +65,6 @@ workflows:
       - run_test:
           requires:
             - install_dependencies
+      - build_docker_image
+          requires:
+            - run_test
