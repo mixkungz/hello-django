@@ -43,6 +43,8 @@ jobs:
 
   build_docker_image:
     working_directory: ~/questionnaire
+    docker:
+      - image: python:3.6
     steps:
       - attach_workspace:
           at: .
