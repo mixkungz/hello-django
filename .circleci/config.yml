@@ -63,7 +63,7 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - add_ssh_key
+      - add_ssh_keys
       - run:
           name: deploy
           command: |
