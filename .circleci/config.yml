@@ -68,7 +68,7 @@ jobs:
           name: deploy
           command: |
             ssh-keyscan -H 35.198.253.178 >> ~/.ssh/known_hosts
-            ssh pcr.mixkungz-circleci@35.198.253.178 ./deploy.sh
+            ssh pcr.mixkungz-circleci@35.198.253.178 sudo su && ./deploy.sh
 
 workflows:
   version: 2
