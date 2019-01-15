@@ -68,8 +68,9 @@ jobs:
           name: deploy
           command: |
             ssh-keyscan -H 35.198.253.178 >> ~/.ssh/known_hosts
-            ssh pcr.mixkungz@35.198.253.178
-            cd hello-django
+            ssh pcr.mixkungz-circleci@35.198.253.178
+            sudo su
+            cd ../pcr.mixkungz/hello-django
             sudo docker-compose -f docker-compose.prod.yml up -d
 
 workflows:
