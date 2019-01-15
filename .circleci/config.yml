@@ -53,7 +53,7 @@ jobs:
           name: build docker image
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-            docker build -t mixkungz/hello-django:stable
+            docker build -t mixkungz/hello-django:stable .
             docker push mixkungz/hello-django:stable
 
 workflows:
